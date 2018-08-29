@@ -1,0 +1,90 @@
+﻿<UserControl x:Class="Stellar.Common.Ui.Views.OfferCreateView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:cal="http://www.caliburnproject.org"
+             xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:local="clr-namespace:Stellar.Common.Ui.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="275" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Content="Create an offer" FontSize="24" />
+
+        <Label Grid.Row="1"
+               Grid.Column="0"
+               Margin="5"
+               VerticalAlignment="Center"
+               Content="ValidFrom:" />
+        <Controls:DateTimePicker
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="0 5 5 5"
+            VerticalAlignment="Center"           
+            SelectedDate="{Binding ValidFrom}" />
+
+        <Label Grid.Row="2"
+               Grid.Column="0"
+               Margin="5"
+               VerticalAlignment="Center"
+               Content="ValidTo:" />
+        <Controls:DateTimePicker
+            Grid.Row="2"
+            Grid.Column="1"
+            Margin="0 5 5 5"
+            VerticalAlignment="Center"
+            SelectedDate="{Binding ValidTo}" />
+
+        <Label Grid.Row="3"
+               Grid.Column="0"
+               Margin="5"
+               VerticalAlignment="Center"
+               Content="Product:" />
+        <TextBox x:Name="newOfferProduct"
+                   Grid.Row="3"
+                   Grid.Column="1"
+                   Margin="0 5 5 5"
+                   VerticalAlignment="Center"
+                   Text="{Binding Product}" />
+
+        <Label Grid.Row="4"
+               Grid.Column="0"
+               Margin="5"
+               VerticalAlignment="Center"
+               Content="Price:" />
+        <Controls:NumericUpDown
+            x:Name="newOfferPrice"
+            Grid.Row="4"
+            Grid.Column="1"
+            Margin="0 5 5 5"
+            VerticalAlignment="Center"
+            Interval="5"
+            Minimum="1"
+            Maximum="1000"
+            StringFormat="C2"
+            Value="{Binding Price}" />
+
+        <Button x:Name="newOfferCreate"
+                Grid.Row="5"
+                Grid.Column="1"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right"
+                Margin="5"
+                Content="Create"
+                cal:Message.Attach="[Event Click] = [Action CreateOffer]"
+                />
+    </Grid>
+</UserControl>
