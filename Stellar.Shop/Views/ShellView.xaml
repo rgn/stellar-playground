@@ -61,11 +61,12 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="325px" />
-                <ColumnDefinition Width="0.25*" />
+                <ColumnDefinition Width="325px" />
             </Grid.ColumnDefinitions>
 
             <ContentControl Grid.Column="0" cal:View.Context="{Binding State, Mode=TwoWay}" cal:View.Model="{Binding OfferOverviewVieModel}" />
             <ContentControl Grid.Column="1" cal:View.Context="{Binding State, Mode=TwoWay}" cal:View.Model="{Binding OfferCreateViewModel}" />
+            <ContentControl Grid.Column="2" cal:View.Context="{Binding State, Mode=TwoWay}" cal:View.Model="{Binding AccountViewModel}" />
         </Grid>
 
         <ContentControl Grid.Row="1" cal:View.Context="{Binding State, Mode=TwoWay}" cal:View.Model="{Binding PaymentOverviewViewModel}" />

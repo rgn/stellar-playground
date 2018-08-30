@@ -7,7 +7,7 @@
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"                        
                       xmlns:v="clr-namespace:Stellar.Customer.Views"                      
                       xmlns:vm="clr-namespace:Stellar.Customer.ViewModels"
-                      Title="Shoppy McShopface"
+                      Title="Buyer McBuyface"
                       Width="905"
                       MinWidth="900"                      
                       MinHeight="400"                      

@@ -28,6 +28,9 @@ namespace Stellar.Shop.ViewModels
         //[Import(typeof(PaymentOverviewViewModel))]
         public PaymentOverviewViewModel PaymentOverviewViewModel { get; set; }
 
+        //[Import(typeof(AccountViewModel))
+        public AccountViewModel AccountViewModel { get; set; }
+
 #if DEBUG
         public ShellViewModel()
             : this(new DummySettingsService(), new DummyOfferProducerService(new DummySettingsService()), new DummyStellarService(new DummySettingsService()))
@@ -43,6 +46,7 @@ namespace Stellar.Shop.ViewModels
             OfferOverviewVieModel = new OfferOverviewViewModel(offerProducerService);
             OfferCreateViewModel = new OfferCreateViewModel(settingsService, offerProducerService);
             PaymentOverviewViewModel = new PaymentOverviewViewModel(stellarService);
+            AccountViewModel = new AccountViewModel(stellarService);
         }
 
         public void Close()
