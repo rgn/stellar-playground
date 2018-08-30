@@ -5,13 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Stellar.Common.Ui.Views"
              xmlns:vm="clr-namespace:Stellar.Common.Ui.ViewModels"
+             xmlns:v="clr-namespace:Stellar.Common.Ui.Views"
              xmlns:c="clr-namespace:Stellar.Common.Ui.Converters"
              d:DataContext="{d:DesignInstance Type=vm:AccountViewModel, IsDesignTimeCreatable=True}"
              mc:Ignorable="d" 
              Width="350"
-             d:DesignHeight="250" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <c:AccountAbbreviatorValueConverter x:Key="AccountAbbreviator" />
+        <c:BlanaceTextConverter x:Key="BalanceTextConverter" />
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -28,10 +30,24 @@
         </Grid.RowDefinitions>
 
         <Label Grid.Row="0" Grid.Column="0" Content="AccountID:" FontSize="24" />
-        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Account.AccountId, Converter={StaticResource AccountAbbreviator}}" FontSize="24" />
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Account.AccountId, Converter={StaticResource AccountAbbreviator}}" ToolTip="{Binding Account.AccountId}" FontSize="24" />
 
         <Label Grid.Row="1" Grid.Column="0" Content="Balances:" FontSize="24" />
-        <TextBlock Grid.Row="1" Grid.Column="1" Text="TBD" FontSize="24" />
+        <ItemsControl Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Account.Balances}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock FontSize="24" ToolTip="{Binding AssetCode}">
+                        <TextBlock.Text>
+                            <MultiBinding Converter="{StaticResource BalanceTextConverter}">
+                                <Binding Path="AssetType" />
+                                <Binding Path="BalanceValue" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        
 
         <Label Grid.Row="2" Grid.Column="0" Content="Data:" FontSize="24" />
         <TextBlock Grid.Row="2" Grid.Column="1" Text="TBD" FontSize="24" />

@@ -17,19 +17,19 @@
     <Grid>
         <StackPanel>
             <Label Content="{Binding Header}" FontSize="24" />
-            <DataGrid ItemsSource="{Binding Transactions}" CanUserAddRows="False" AutoGenerateColumns="False" >
+            <DataGrid ItemsSource="{Binding Payments}" CanUserAddRows="False" AutoGenerateColumns="False" >
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="From"  Binding="{Binding SourceAccount, Converter={StaticResource AccountAbbreviator}}" IsReadOnly="True">
+                    <DataGridTextColumn Header="From"  Binding="{Binding From, Converter={StaticResource AccountAbbreviator}}" IsReadOnly="True">
                         <DataGridTextColumn.CellStyle>
                             <Style TargetType="DataGridCell">
-                                <Setter Property="ToolTip" Value="{Binding SourceAccount}" />
+                                <Setter Property="ToolTip" Value="{Binding From}" />
                             </Style>
                         </DataGridTextColumn.CellStyle>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="To" Binding="{Binding TargetAccount, Converter={StaticResource AccountAbbreviator}}" IsReadOnly="True">
+                    <DataGridTextColumn Header="To" Binding="{Binding To, Converter={StaticResource AccountAbbreviator}}" IsReadOnly="True">
                         <DataGridTextColumn.CellStyle>
                             <Style TargetType="DataGridCell">
-                                <Setter Property="ToolTip" Value="{Binding TargetAccount}" />
+                                <Setter Property="ToolTip" Value="{Binding To}" />
                             </Style>
                         </DataGridTextColumn.CellStyle>
                     </DataGridTextColumn>
